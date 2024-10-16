@@ -1,0 +1,10 @@
+.idea/
+__pycache__/
+my-venv/
+__pycache__
+env/lib/python3.12/site-packages/PySide6/Qt/lib/libQt6WebEngineCore.so.6
+
+env/
+*.so
+*.log
+venv
