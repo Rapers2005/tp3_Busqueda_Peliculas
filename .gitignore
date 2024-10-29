@@ -8,3 +8,4 @@ env/
 *.so
 *.log
 venv
+ui/peliculas.py
