@@ -207,12 +207,12 @@
      <string>Buscar</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="PeliculasComunes">
+   <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>400</y>
-      <width>441</width>
+      <width>411</width>
       <height>101</height>
      </rect>
     </property>
@@ -270,8 +270,13 @@
       <set>AlignLeading|AlignVCenter</set>
      </property>
     </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string/>
+     </property>
+    </item>
    </widget>
-   <widget class="QLabel" name="labelPoster">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -285,19 +290,6 @@
     </property>
     <property name="textFormat">
      <enum>Qt::MarkdownText</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonCargarJSON">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>10</y>
-      <width>151</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Busqueda Avanzada</string>
     </property>
    </widget>
   </widget>

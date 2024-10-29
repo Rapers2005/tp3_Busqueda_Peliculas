@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'peliculas.ui'
+##
+## Created by: Qt User Interface Compiler version 6.8.0
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
@@ -78,36 +87,35 @@ class Ui_MainWindow(object):
         self.pushButton_2 = QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(150, 360, 88, 27))
-        self.PeliculasComunes = QTableWidget(self.centralwidget)
-        if (self.PeliculasComunes.columnCount() < 1):
-            self.PeliculasComunes.setColumnCount(1)
+        self.tableWidget = QTableWidget(self.centralwidget)
+        if (self.tableWidget.columnCount() < 1):
+            self.tableWidget.setColumnCount(1)
         __qtablewidgetitem7 = QTableWidgetItem()
         __qtablewidgetitem7.setTextAlignment(Qt.AlignLeading|Qt.AlignVCenter);
         __qtablewidgetitem7.setFont(font);
-        self.PeliculasComunes.setHorizontalHeaderItem(0, __qtablewidgetitem7)
-        if (self.PeliculasComunes.rowCount() < 2):
-            self.PeliculasComunes.setRowCount(2)
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem7)
+        if (self.tableWidget.rowCount() < 2):
+            self.tableWidget.setRowCount(2)
         __qtablewidgetitem8 = QTableWidgetItem()
         __qtablewidgetitem8.setFont(font);
-        self.PeliculasComunes.setVerticalHeaderItem(0, __qtablewidgetitem8)
+        self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
         __qtablewidgetitem9.setFont(font);
-        self.PeliculasComunes.setVerticalHeaderItem(1, __qtablewidgetitem9)
-        self.PeliculasComunes.setObjectName(u"PeliculasComunes")
-        self.PeliculasComunes.setGeometry(QRect(20, 400, 441, 101))
-        self.PeliculasComunes.setTabKeyNavigation(True)
-        self.PeliculasComunes.setProperty(u"showDropIndicator", True)
-        self.PeliculasComunes.setDragDropOverwriteMode(True)
-        self.PeliculasComunes.setSelectionBehavior(QAbstractItemView.SelectItems)
-        self.PeliculasComunes.horizontalHeader().setDefaultSectionSize(350)
-        self.PeliculasComunes.horizontalHeader().setHighlightSections(True)
-        self.labelPoster = QLabel(self.centralwidget)
-        self.labelPoster.setObjectName(u"labelPoster")
-        self.labelPoster.setGeometry(QRect(470, 50, 141, 181))
-        self.labelPoster.setTextFormat(Qt.MarkdownText)
-        self.pushButtonCargarJSON = QPushButton(self.centralwidget)
-        self.pushButtonCargarJSON.setObjectName(u"pushButtonCargarJSON")
-        self.pushButtonCargarJSON.setGeometry(QRect(320, 10, 151, 27))
+        self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget.setItem(0, 0, __qtablewidgetitem10)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(20, 400, 411, 101))
+        self.tableWidget.setTabKeyNavigation(True)
+        self.tableWidget.setProperty(u"showDropIndicator", True)
+        self.tableWidget.setDragDropOverwriteMode(True)
+        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectItems)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(350)
+        self.tableWidget.horizontalHeader().setHighlightSections(True)
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(470, 50, 141, 181))
+        self.label.setTextFormat(Qt.MarkdownText)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -151,14 +159,18 @@ class Ui_MainWindow(object):
         self.lineEdit_3.setText(QCoreApplication.translate("MainWindow", u"Actor 1:", None))
         self.lineEdit_4.setText(QCoreApplication.translate("MainWindow", u"Actor 2:", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
-        ___qtablewidgetitem6 = self.PeliculasComunes.horizontalHeaderItem(0)
+        ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Pel\u00edculas Comunes", None));
-        ___qtablewidgetitem7 = self.PeliculasComunes.verticalHeaderItem(0)
+        ___qtablewidgetitem7 = self.tableWidget.verticalHeaderItem(0)
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"T\u00edtulo", None));
-        ___qtablewidgetitem8 = self.PeliculasComunes.verticalHeaderItem(1)
+        ___qtablewidgetitem8 = self.tableWidget.verticalHeaderItem(1)
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"A\u00f1o", None));
-        self.labelPoster.setText(QCoreApplication.translate("MainWindow", u"Posters", None))
-        self.pushButtonCargarJSON.setText(QCoreApplication.translate("MainWindow", u"Busqueda Avanzada", None))
+
+        __sortingEnabled1 = self.tableWidget.isSortingEnabled()
+        self.tableWidget.setSortingEnabled(False)
+        self.tableWidget.setSortingEnabled(__sortingEnabled1)
+
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Posters", None))
         self.menuPeliculas.setTitle(QCoreApplication.translate("MainWindow", u"Peliculas", None))
     # retranslateUi
 
