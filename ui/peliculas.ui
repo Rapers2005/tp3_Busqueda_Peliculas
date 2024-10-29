@@ -276,7 +276,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelPoster">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -290,6 +290,19 @@
     </property>
     <property name="textFormat">
      <enum>Qt::MarkdownText</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonCargarJSON">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>10</y>
+      <width>151</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Busqueda avanzada</string>
     </property>
    </widget>
   </widget>
