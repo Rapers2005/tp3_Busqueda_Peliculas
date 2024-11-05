@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>PeliculasWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <widget class="QMainWindow" name="PeliculasWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -85,7 +85,7 @@
     </row>
     <row>
      <property name="text">
-      <string>Puntuación</string>
+      <string>Recaudación</string>
      </property>
      <property name="font">
       <font>
@@ -290,19 +290,6 @@
     </property>
     <property name="textFormat">
      <enum>Qt::MarkdownText</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButtonCargarJSON">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>10</y>
-      <width>151</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Busqueda avanzada</string>
     </property>
    </widget>
   </widget>

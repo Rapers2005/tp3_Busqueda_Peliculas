@@ -9,7 +9,6 @@ env/
 *.log
 venv
 ui/peliculas.py
-controlador.py
-main.py
-vista.py
-modelo.py
+
+
+
