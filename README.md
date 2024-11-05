@@ -17,55 +17,46 @@ PySide6
 Instalación de dependencias
 Puedes instalar todas las dependencias necesarias ejecutando el siguiente comando:
 
-bash
-Copiar código
+
 pip install -r requirements.txt
 Instalación y configuración en un entorno local
 Clonar el repositorio
-bash
-Copiar código
+
 git clone https://github.com/tu-usuario/tu-repositorio.git
 Moverse al directorio del proyecto
-bash
-Copiar código
+
 cd nombre-del-directorio
 Crear un entorno virtual
-bash
-Copiar código
+
 python -m venv env
 Activar el entorno virtual
 En Windows
-bash
-Copiar código
+
 env\Scripts\activate
 En Mac/Linux
-bash
-Copiar código
+
 source env/bin/activate
 Instalar las dependencias
-bash
-Copiar código
+
 pip install -r requirements.txt
 Compilación del archivo .ui
 Este proyecto utiliza un archivo .ui generado por Qt Designer para definir la interfaz gráfica. Para convertir este archivo .ui a un archivo Python que puede ser utilizado en el proyecto, sigue estos pasos:
 
 Navegar al directorio donde está el archivo .ui:
 
-bash
-Copiar código
+
 cd ruta/del/archivo/ui
 Compilar el archivo .ui a Python con el siguiente comando:
 
-bash
-Copiar código
+
 pyside6-uic peliculas.ui -o ui_peliculas.py
 Esto generará un archivo ui_peliculas.py que puedes importar en tu código como módulo Python.
 
 Ejecución del proyecto
 Para ejecutar la aplicación, asegúrate de que el entorno virtual esté activado y usa el siguiente comando:
 
-bash
-Copiar código
+
+
 python main.py
 Estructura del Proyecto
 main.py: Punto de entrada de la aplicación.
@@ -85,4 +76,6 @@ Para editar la interfaz gráfica, puedes abrir peliculas.ui en Qt Designer, hace
 Se adjunta archivo JSON y una carpeta con imagenes de posters.
 
 
+Cambios:
 
+Se reemplazo el campo "puntuacion" por "recaudacion" con la informacion pertinente
