@@ -4,13 +4,16 @@ from PySide6.QtGui import QPixmap
 import os
 from PySide6.QtCore import Qt
 
+
 class Controlador:
     def __init__(self, modelo, vista):
-        self._modelo = modelo  # Instancia del modelo
-        self._vista = vista  # Instancia de la vista
+        self._modelo = modelo
+        self._vista = vista
 
+        # Inicializar autocompletado
         self._inicializar_completers()
 
+        # Conexión de botones con funciones
         self._vista.pushButton.clicked.connect(self._buscar_por_titulo)
         self._vista.pushButton_2.clicked.connect(
             lambda: self._buscar_por_actores(
@@ -19,10 +22,13 @@ class Controlador:
                 self._vista.PeliculasComunes
             )
         )
-        self._vista.lineEdit.mouseDoubleClickEvent = self._limpiar_campo_titulo
-        self._vista.lineEdit_3.mouseDoubleClickEvent = self._limpiar_campo_actor1
-        self._vista.lineEdit_4.mouseDoubleClickEvent = self._limpiar_campo_actor2
 
+        # Limpiar campos con doble clic
+        self._vista.lineEdit.mouseDoubleClickEvent = lambda event: self._limpiar_campo(self._vista.lineEdit)
+        self._vista.lineEdit_3.mouseDoubleClickEvent = lambda event: self._limpiar_campo(self._vista.lineEdit_3)
+        self._vista.lineEdit_4.mouseDoubleClickEvent = lambda event: self._limpiar_campo(self._vista.lineEdit_4)
+
+    # Inicializar autocompletado de títulos y actores
     def _inicializar_completers(self):
         titulos_peliculas = self._modelo.obtener_titulos()
         completer = QCompleter(titulos_peliculas)
@@ -37,38 +43,33 @@ class Controlador:
         self._vista.lineEdit_3.setCompleter(completer_actor_1)
         self._vista.lineEdit_4.setCompleter(completer_actor_2)
 
+    # Limpiar campo de texto
+    def _limpiar_campo(self, campo):
+        campo.clear()
 
-
-    def _limpiar_campo_titulo(self, event):
-        self._vista.lineEdit.clear()
-
-    def _limpiar_campo_actor1(self, event):
-        self._vista.lineEdit_3.clear()
-
-    def _limpiar_campo_actor2(self, event):
-        self._vista.lineEdit_4.clear()
-
+    # Buscar película por título
     def _buscar_por_titulo(self):
         titulo = self._vista.lineEdit.text()
         resultados = self._modelo.buscar_por_titulo(titulo)
         if resultados:
             pelicula = resultados[0]
             self._actualizar_tabla_por_titulo(self._vista.Peliculas, pelicula)
-            self._mostrar_poster(pelicula["titulo"])
+            self._mostrar_poster(pelicula.titulo)
         else:
             self._mostrar_mensaje("No se encontró la película con ese título.")
             self._vista.labelPoster.clear()
 
+    # Mostrar el póster de la película
     def _mostrar_poster(self, titulo_pelicula):
         ruta_carpeta_imagenes = "imagenes_posters"
         nombre_archivo_base = f"{titulo_pelicula.lower().replace(' ', '_').replace(':', '')}"
-        ruta_imagen_jpg = os.path.join(ruta_carpeta_imagenes, f"{nombre_archivo_base}.jpg")
-        ruta_imagen_png = os.path.join(ruta_carpeta_imagenes, f"{nombre_archivo_base}.png")
+        extensiones = [".jpg", ".png"]
 
-        if os.path.exists(ruta_imagen_jpg):
-            pixmap = QPixmap(ruta_imagen_jpg)
-        elif os.path.exists(ruta_imagen_png):
-            pixmap = QPixmap(ruta_imagen_png)
+        for extension in extensiones:
+            ruta_imagen = os.path.join(ruta_carpeta_imagenes, f"{nombre_archivo_base}{extension}")
+            if os.path.exists(ruta_imagen):
+                pixmap = QPixmap(ruta_imagen)
+                break
         else:
             pixmap = QPixmap("imagenes_posters/no_image_available.jpg")
 
@@ -77,37 +78,46 @@ class Controlador:
         else:
             self._vista.labelPoster.setPixmap(pixmap.scaled(self._vista.labelPoster.size(), Qt.KeepAspectRatio))
 
+    # Buscar películas donde los dos actores hayan trabajado juntos
     def _buscar_por_actores(self, actor1, actor2, tabla):
+        if not actor1 or not actor2:
+            self._mostrar_mensaje("Por favor, ingresa ambos actores.")
+            return
+
         resultados = [pelicula for pelicula in self._modelo.obtener_peliculas()
-                      if actor1 in pelicula['actores'] and actor2 in pelicula['actores']]
+                      if actor1 in pelicula.actores and actor2 in pelicula.actores]
 
         if resultados:
             self._actualizar_tabla_por_actores(tabla, resultados)
         else:
             self._mostrar_mensaje("No se encontraron películas comunes para estos actores.")
 
+    # Obtener lista única de todos los actores
     def _obtener_lista_actores(self):
         lista_actores = []
         for pelicula in self._modelo.obtener_peliculas():
-            lista_actores.extend(pelicula['actores'])
-        return list(set(lista_actores))
+            lista_actores.extend(pelicula.actores)
+        return list(set(lista_actores))  # Eliminar duplicados
 
+    # Actualizar tabla con la información de una película
     def _actualizar_tabla_por_titulo(self, tabla, pelicula):
         tabla.setRowCount(6)
-        tabla.setItem(0, 0, QtWidgets.QTableWidgetItem(pelicula["titulo"]))
-        tabla.setItem(1, 0, QtWidgets.QTableWidgetItem(", ".join(pelicula["actores"])))
-        tabla.setItem(2, 0, QtWidgets.QTableWidgetItem(pelicula["sinopsis"]))
-        tabla.setItem(3, 0, QtWidgets.QTableWidgetItem(str(pelicula["recaudacion"])))
-        tabla.setItem(4, 0, QtWidgets.QTableWidgetItem("N/A"))
-        tabla.setItem(5, 0, QtWidgets.QTableWidgetItem("N/A"))
+        tabla.setItem(0, 0, QtWidgets.QTableWidgetItem(pelicula.titulo))
+        tabla.setItem(1, 0, QtWidgets.QTableWidgetItem(", ".join(pelicula.actores)))
+        tabla.setItem(2, 0, QtWidgets.QTableWidgetItem(pelicula.sinopsis))
+        tabla.setItem(3, 0, QtWidgets.QTableWidgetItem(str(pelicula.puntuacion)))
+        tabla.setItem(4, 0, QtWidgets.QTableWidgetItem(str(pelicula.anio)))
+        tabla.setItem(5, 0, QtWidgets.QTableWidgetItem(f"{pelicula.duracion} min"))
 
+    # Actualizar tabla con películas donde ambos actores hayan trabajado juntos
     def _actualizar_tabla_por_actores(self, tabla, resultados):
         tabla.clearContents()
-        titulos_peliculas = ", ".join([pelicula["titulo"] for pelicula in resultados])
-        anios_peliculas = ", ".join([str(pelicula.get("anio", "N/A")) for pelicula in resultados])
+        titulos_peliculas = ", ".join([pelicula.titulo for pelicula in resultados])
+        anios_peliculas = ", ".join([str(pelicula.anio) for pelicula in resultados])
         tabla.setItem(0, 0, QtWidgets.QTableWidgetItem(titulos_peliculas))
         tabla.setItem(1, 0, QtWidgets.QTableWidgetItem(anios_peliculas))
 
+    # Mostrar mensaje emergente
     def _mostrar_mensaje(self, mensaje):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
