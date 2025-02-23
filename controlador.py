@@ -10,10 +10,10 @@ class Controlador:
         self._modelo = modelo
         self._vista = vista
 
-        # Inicializar autocompletado
+
         self._inicializar_completers()
 
-        # Conexión de botones con funciones
+
         self._vista.pushButton.clicked.connect(self._buscar_por_titulo)
         self._vista.pushButton_2.clicked.connect(
             lambda: self._buscar_por_actores(
@@ -23,12 +23,12 @@ class Controlador:
             )
         )
 
-        # Limpiar campos con doble clic
+
         self._vista.lineEdit.mouseDoubleClickEvent = lambda event: self._limpiar_campo(self._vista.lineEdit)
         self._vista.lineEdit_3.mouseDoubleClickEvent = lambda event: self._limpiar_campo(self._vista.lineEdit_3)
         self._vista.lineEdit_4.mouseDoubleClickEvent = lambda event: self._limpiar_campo(self._vista.lineEdit_4)
 
-    # Inicializar autocompletado de títulos y actores
+
     def _inicializar_completers(self):
         titulos_peliculas = self._modelo.obtener_titulos()
         completer = QCompleter(titulos_peliculas)
@@ -43,11 +43,10 @@ class Controlador:
         self._vista.lineEdit_3.setCompleter(completer_actor_1)
         self._vista.lineEdit_4.setCompleter(completer_actor_2)
 
-    # Limpiar campo de texto
+
     def _limpiar_campo(self, campo):
         campo.clear()
 
-    # Buscar película por título
     def _buscar_por_titulo(self):
         titulo = self._vista.lineEdit.text()
         resultados = self._modelo.buscar_por_titulo(titulo)
@@ -59,7 +58,7 @@ class Controlador:
             self._mostrar_mensaje("No se encontró la película con ese título.")
             self._vista.labelPoster.clear()
 
-    # Mostrar el póster de la película
+
     def _mostrar_poster(self, titulo_pelicula):
         ruta_carpeta_imagenes = "imagenes_posters"
         nombre_archivo_base = f"{titulo_pelicula.lower().replace(' ', '_').replace(':', '')}"
@@ -78,7 +77,7 @@ class Controlador:
         else:
             self._vista.labelPoster.setPixmap(pixmap.scaled(self._vista.labelPoster.size(), Qt.KeepAspectRatio))
 
-    # Buscar películas donde los dos actores hayan trabajado juntos
+
     def _buscar_por_actores(self, actor1, actor2, tabla):
         if not actor1 or not actor2:
             self._mostrar_mensaje("Por favor, ingresa ambos actores.")
@@ -92,14 +91,14 @@ class Controlador:
         else:
             self._mostrar_mensaje("No se encontraron películas comunes para estos actores.")
 
-    # Obtener lista única de todos los actores
+
     def _obtener_lista_actores(self):
         lista_actores = []
         for pelicula in self._modelo.obtener_peliculas():
             lista_actores.extend(pelicula.actores)
-        return list(set(lista_actores))  # Eliminar duplicados
+        return list(set(lista_actores))
 
-    # Actualizar tabla con la información de una película
+
     def _actualizar_tabla_por_titulo(self, tabla, pelicula):
         tabla.setRowCount(6)
         tabla.setItem(0, 0, QtWidgets.QTableWidgetItem(pelicula.titulo))
@@ -109,7 +108,7 @@ class Controlador:
         tabla.setItem(4, 0, QtWidgets.QTableWidgetItem(str(pelicula.anio)))
         tabla.setItem(5, 0, QtWidgets.QTableWidgetItem(f"{pelicula.duracion} min"))
 
-    # Actualizar tabla con películas donde ambos actores hayan trabajado juntos
+
     def _actualizar_tabla_por_actores(self, tabla, resultados):
         tabla.clearContents()
         titulos_peliculas = ", ".join([pelicula.titulo for pelicula in resultados])
@@ -117,7 +116,7 @@ class Controlador:
         tabla.setItem(0, 0, QtWidgets.QTableWidgetItem(titulos_peliculas))
         tabla.setItem(1, 0, QtWidgets.QTableWidgetItem(anios_peliculas))
 
-    # Mostrar mensaje emergente
+
     def _mostrar_mensaje(self, mensaje):
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
