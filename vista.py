@@ -1,6 +1,8 @@
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtGui
+from PySide6 import QtCore
 from PySide6.QtCore import Slot, Signal
 from ui.peliculas import Ui_PeliculasWindow
+
 
 class PeliculasWindow(QtWidgets.QMainWindow, Ui_PeliculasWindow):
     buscar_pelicula_signal = Signal(str)
@@ -16,7 +18,7 @@ class PeliculasWindow(QtWidgets.QMainWindow, Ui_PeliculasWindow):
 
     def _connect_signals(self):
         self.pushButton.clicked.connect(self._on_buscar_pelicula)
-        self.pushButton_2.clicked.connect(self._on_buscar_actores)
+
 
     @Slot()
     def _on_buscar_pelicula(self):

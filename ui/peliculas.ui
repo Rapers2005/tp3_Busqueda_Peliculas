@@ -138,80 +138,60 @@
       <height>27</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Ingresar título</string>
+    <property name="placeholderText">
+     <string>Ingrese un titulo</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>10</y>
+      <x>440</x>
+      <y>480</y>
       <width>88</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
      <string>Buscar</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>280</y>
-      <width>231</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Búsqueda de pelicula por actores</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_3">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>320</y>
+      <y>290</y>
       <width>113</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Actor 1:</string>
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Actor: 1</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_4">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>360</y>
+      <y>330</y>
       <width>113</width>
       <height>27</height>
      </rect>
     </property>
     <property name="text">
-     <string>Actor 2:</string>
+     <string/>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>360</y>
-      <width>88</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Buscar</string>
+    <property name="placeholderText">
+     <string>Actor: 2</string>
     </property>
    </widget>
    <widget class="QTableWidget" name="PeliculasComunes">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>400</y>
+      <y>370</y>
       <width>411</width>
       <height>101</height>
      </rect>
@@ -290,6 +270,19 @@
     </property>
     <property name="textFormat">
      <enum>Qt::MarkdownText</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTituloActores">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>260</y>
+      <width>411</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&quot;Aquí aparecerán los resultados de la búsqueda por actores&quot;</string>
     </property>
    </widget>
   </widget>
