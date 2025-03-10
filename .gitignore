@@ -9,6 +9,6 @@ env/
 *.log
 venv
 ui/peliculas.py
-
+ui_peliculas2.py 
 
 
