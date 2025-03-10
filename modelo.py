@@ -1,31 +1,53 @@
 import json
 import os
 
+class Actor:
+    def __init__(self, nombre):
+        self.__nombre = nombre
+
+    @property
+    def nombre(self):
+        return self.__nombre
+
+    def to_dict(self):
+        """
+        Convierte este actor a un diccionario para serializarlo.
+        """
+        return {
+            "nombre": self.__nombre
+        }
+
+    def __str__(self):
+        return self.__nombre
+
 
 class Pelicula:
     def __init__(self, titulo, actores, sinopsis, puntuacion, anio, duracion):
         self.__titulo = titulo
-        self.__actores = actores
+        # Convertimos la lista de strings en lista de objetos Actor
+        # Ej: ["Keanu Reeves", "Laurence Fishburne"] => [Actor("Keanu Reeves"), ...]
+        self.__actores = [Actor(nombre) for nombre in actores]
         self.__sinopsis = sinopsis
         self.__puntuacion = puntuacion
         self.__anio = anio
         self.__duracion = duracion
 
-
     @property
     def titulo(self):
         return self.__titulo
 
-
     @property
     def actores(self):
+        """
+        Retorna la lista de objetos Actor.
+        Si prefieres exponer solo sus nombres como strings,
+        podrías hacer: return [actor.nombre for actor in self.__actores]
+        """
         return self.__actores
-
 
     @property
     def sinopsis(self):
         return self.__sinopsis
-
 
     @property
     def puntuacion(self):
@@ -38,7 +60,6 @@ class Pelicula:
         else:
             raise ValueError("La puntuación debe estar entre 0 y 10.")
 
-
     @property
     def anio(self):
         return self.__anio
@@ -49,7 +70,6 @@ class Pelicula:
             self.__anio = nuevo_anio
         else:
             raise ValueError("El año debe ser válido.")
-
 
     @property
     def duracion(self):
@@ -62,15 +82,21 @@ class Pelicula:
         else:
             raise ValueError("La duración debe ser un número positivo.")
 
-
     def __str__(self):
-        return f"{self.titulo} ({self.anio}) - Puntuación: {self.puntuacion}/10, Duración: {self.duracion} min"
-
+        # Si quieres mostrar los nombres de los actores,
+        # podrías hacer ', '.join([actor.nombre for actor in self.__actores])
+        nombres_actores = ', '.join([actor.nombre for actor in self.__actores])
+        return (f"{self.titulo} ({self.anio}) - Puntuación: {self.puntuacion}/10, "
+                f"Duración: {self.duracion} min, Actores: {nombres_actores}")
 
     def to_dict(self):
+        """
+        Convierte la película a un diccionario, serializando también a los actores
+        como una lista de dicts { "nombre": ... }.
+        """
         return {
             "titulo": self.titulo,
-            "actores": self.actores,
+            "actores": [actor.to_dict() for actor in self.__actores],
             "sinopsis": self.sinopsis,
             "puntuacion": self.puntuacion,
             "anio": self.anio,
@@ -83,39 +109,37 @@ class PeliculasModel:
         self.archivo_json = archivo_json
         self.__peliculas = self.__cargar_peliculas()
 
-
     def __cargar_peliculas(self):
         if not os.path.exists(self.archivo_json):
             return []
 
         with open(self.archivo_json, "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
+            # datos es una lista de diccionarios,
+            # donde 'actores' es una lista de strings
+            # => se convertirá en objetos Actor en Pelicula.__init__
             return [Pelicula(**pelicula) for pelicula in datos]
-
 
     def __guardar_peliculas(self):
         with open(self.archivo_json, "w", encoding="utf-8") as archivo:
+            # Al serializar, Pelicula.to_dict()
+            # convertirá cada Actor a dict {"nombre": ...}
             json.dump([pelicula.to_dict() for pelicula in self.__peliculas], archivo, indent=4)
-
 
     def obtener_titulos(self):
         return [pelicula.titulo for pelicula in self.__peliculas]
 
-
     def obtener_peliculas(self):
         return self.__peliculas
 
-
     def buscar_por_titulo(self, titulo):
-        return [pelicula for pelicula in self.__peliculas if titulo.lower() in pelicula.titulo.lower()]
-
+        return [p for p in self.__peliculas if titulo.lower() in p.titulo.lower()]
 
     def agregar_pelicula(self, pelicula):
         if any(p.titulo.lower() == pelicula.titulo.lower() for p in self.__peliculas):
             raise ValueError("Ya existe una película con ese título.")
         self.__peliculas.append(pelicula)
         self.__guardar_peliculas()
-
 
     def eliminar_pelicula(self, titulo):
         peliculas_filtradas = [p for p in self.__peliculas if p.titulo.lower() != titulo.lower()]
@@ -124,16 +148,16 @@ class PeliculasModel:
         self.__peliculas = peliculas_filtradas
         self.__guardar_peliculas()
 
-
     def actualizar_pelicula(self, titulo, nuevos_datos):
         for pelicula in self.__peliculas:
             if pelicula.titulo.lower() == titulo.lower():
                 if 'titulo' in nuevos_datos:
-                    pelicula.__titulo = nuevos_datos['titulo']
+                    pelicula._Pelicula__titulo = nuevos_datos['titulo']
                 if 'actores' in nuevos_datos:
-                    pelicula.__actores = nuevos_datos['actores']
+                    # Convertimos la lista de strings en objetos Actor
+                    pelicula._Pelicula__actores = [Actor(nombre) for nombre in nuevos_datos['actores']]
                 if 'sinopsis' in nuevos_datos:
-                    pelicula.__sinopsis = nuevos_datos['sinopsis']
+                    pelicula._Pelicula__sinopsis = nuevos_datos['sinopsis']
                 if 'puntuacion' in nuevos_datos:
                     pelicula.puntuacion = nuevos_datos['puntuacion']
                 if 'anio' in nuevos_datos:

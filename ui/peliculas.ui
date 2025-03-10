@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>641</width>
-    <height>600</height>
+    <width>429</width>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,133 +20,24 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableWidget" name="Peliculas">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>50</y>
-      <width>371</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="rowCount">
-     <number>5</number>
-    </property>
-    <property name="columnCount">
-     <number>1</number>
-    </property>
-    <attribute name="horizontalHeaderStretchLastSection">
-     <bool>true</bool>
-    </attribute>
-    <attribute name="verticalHeaderVisible">
-     <bool>true</bool>
-    </attribute>
-    <attribute name="verticalHeaderCascadingSectionResizes">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="verticalHeaderStretchLastSection">
-     <bool>false</bool>
-    </attribute>
-    <row>
-     <property name="text">
-      <string>Título</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Actor</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Sinopsis</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Recaudación</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <italic>false</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Extras</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Ficha</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </item>
-   </widget>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>60</y>
       <width>181</width>
       <height>27</height>
      </rect>
     </property>
     <property name="placeholderText">
-     <string>Ingrese un titulo</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>480</y>
+      <x>260</x>
+      <y>250</y>
       <width>88</width>
       <height>27</height>
      </rect>
@@ -155,11 +46,11 @@
      <string>Buscar</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="TituloActores">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>290</y>
+      <x>10</x>
+      <y>160</y>
       <width>113</width>
       <height>27</height>
      </rect>
@@ -168,14 +59,14 @@
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Actor: 1</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="TituloActores_2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>330</y>
+      <x>10</x>
+      <y>200</y>
       <width>113</width>
       <height>27</height>
      </rect>
@@ -184,105 +75,49 @@
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Actor: 2</string>
-    </property>
-   </widget>
-   <widget class="QTableWidget" name="PeliculasComunes">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>370</y>
-      <width>411</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="tabKeyNavigation">
-     <bool>true</bool>
-    </property>
-    <property name="showDropIndicator" stdset="0">
-     <bool>true</bool>
-    </property>
-    <property name="dragDropOverwriteMode">
-     <bool>true</bool>
-    </property>
-    <property name="selectionBehavior">
-     <enum>QAbstractItemView::SelectItems</enum>
-    </property>
-    <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>350</number>
-    </attribute>
-    <attribute name="horizontalHeaderHighlightSections">
-     <bool>true</bool>
-    </attribute>
-    <row>
-     <property name="text">
-      <string>Título</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Año</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Películas Comunes</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="textAlignment">
-      <set>AlignLeading|AlignVCenter</set>
-     </property>
-    </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string/>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLabel" name="labelPoster">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>50</y>
-      <width>141</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Posters</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::MarkdownText</enum>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="labelTituloActores">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>260</y>
-      <width>411</width>
+      <y>120</y>
+      <width>115</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="text">
+     <string>&quot;Ingrese actores&quot;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="LimpiarBusqueda">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>141</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Limpiar Busqueda </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelTituloTitulo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>123</width>
       <height>19</height>
      </rect>
     </property>
     <property name="text">
-     <string>&quot;Aquí aparecerán los resultados de la búsqueda por actores&quot;</string>
+     <string>&quot;Ingrese un titulo&quot;</string>
     </property>
    </widget>
   </widget>
@@ -291,7 +126,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>641</width>
+     <width>429</width>
      <height>24</height>
     </rect>
    </property>
