@@ -8,7 +8,7 @@ env/
 *.so
 *.log
 venv
-ui/peliculas.py
-ui_peliculas2.py 
+#ui/peliculas.py
+#ui_peliculas2.py 
 
 
