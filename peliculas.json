@@ -5,7 +5,7 @@
     "sinopsis": "Sueños y realidades",
     "puntuacion": 8.8,
     "anio": 2010,
-    "duracion": 148
+    "duracion": "148 min"
   },
   {
     "titulo": "The Matrix",
@@ -13,7 +13,7 @@
     "sinopsis": "Realidad virtual",
     "puntuacion": 8.7,
     "anio": 1999,
-    "duracion": 136
+    "duracion": "136 min"
   },
   {
     "titulo": "The Dark Knight",
@@ -21,7 +21,7 @@
     "sinopsis": "Batman enfrenta al Joker",
     "puntuacion": 9.0,
     "anio": 2008,
-    "duracion": 152
+    "duracion": "152 min"
   },
   {
     "titulo": "John Wick Chapter 4",
@@ -29,7 +29,7 @@
     "sinopsis": "John Wick contra un nuevo enemigo poderoso",
     "puntuacion": 8.2,
     "anio": 2023,
-    "duracion": 169
+    "duracion": "169 min"
   },
   {
     "titulo":"Les Misérables",
@@ -37,7 +37,7 @@
     "sinopsis": "Adaptación musical de la novela de Victor Hugo",
     "puntuacion": 7.6,
     "anio": 2012,
-    "duracion":158
+    "duracion":"158 min"
   },
   {
     "titulo": "Ocean's Eleven",
@@ -45,7 +45,7 @@
     "sinopsis": "Un grupo de ladrones planea un gran atraco en Las Vegas",
     "puntuacion": 7.7,
     "anio": 2001,
-    "duracion": 116
+    "duracion": "116 min"
   },
   {
     "titulo":"The Departed",
@@ -53,7 +53,7 @@
     "sinopsis":"Infiltración en el mundo del crimen en Boston",
     "puntuacion":8.5,
     "anio": 2006,
-    "duracion": 151
+    "duracion": "151 min" 
   },
   {
     "titulo": "The Prestige",
@@ -61,6 +61,6 @@
     "sinopsis": "Dos magos rivales y sus secretos",
     "puntuacion": 8.5,
     "anio": 2006,
-    "duracion": 130
+    "duracion": "130 min"
   }
 ]

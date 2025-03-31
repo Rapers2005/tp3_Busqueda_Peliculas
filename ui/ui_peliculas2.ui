@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>641</width>
-    <height>600</height>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -133,7 +133,7 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>480</y>
+      <y>380</y>
       <width>88</width>
       <height>27</height>
      </rect>
@@ -141,75 +141,6 @@
     <property name="text">
      <string>Cerrar</string>
     </property>
-   </widget>
-   <widget class="QTableWidget" name="PeliculasComunes">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>320</y>
-      <width>411</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="tabKeyNavigation">
-     <bool>true</bool>
-    </property>
-    <property name="showDropIndicator" stdset="0">
-     <bool>true</bool>
-    </property>
-    <property name="dragDropOverwriteMode">
-     <bool>true</bool>
-    </property>
-    <property name="selectionBehavior">
-     <enum>QAbstractItemView::SelectItems</enum>
-    </property>
-    <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>350</number>
-    </attribute>
-    <attribute name="horizontalHeaderHighlightSections">
-     <bool>true</bool>
-    </attribute>
-    <row>
-     <property name="text">
-      <string>Título</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <row>
-     <property name="text">
-      <string>Año</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-    </row>
-    <column>
-     <property name="text">
-      <string>Películas Comunes</string>
-     </property>
-     <property name="font">
-      <font>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="textAlignment">
-      <set>AlignLeading|AlignVCenter</set>
-     </property>
-    </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string/>
-     </property>
-    </item>
    </widget>
    <widget class="QLabel" name="labelPoster">
     <property name="geometry">
@@ -225,19 +156,6 @@
     </property>
     <property name="textFormat">
      <enum>Qt::MarkdownText</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelTituloActores">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>260</y>
-      <width>411</width>
-      <height>19</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&quot;Resultado de la búsqueda Actores&quot;</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelTituloTitulo2">
