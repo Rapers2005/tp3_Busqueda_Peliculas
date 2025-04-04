@@ -24,8 +24,7 @@ class Actor:
 class Pelicula:
     def __init__(self, titulo, actores, sinopsis, puntuacion, anio, duracion):
         self.__titulo = titulo
-        # Convertimos la lista de strings en lista de objetos Actor
-        # Ej: ["Keanu Reeves", "Laurence Fishburne"] => [Actor("Keanu Reeves"), ...]
+
         self.__actores = [Actor(nombre) for nombre in actores]
         self.__sinopsis = sinopsis
         self.__puntuacion = puntuacion
@@ -38,11 +37,7 @@ class Pelicula:
 
     @property
     def actores(self):
-        """
-        Retorna la lista de objetos Actor.
-        Si prefieres exponer solo sus nombres como strings,
-        podrías hacer: return [actor.nombre for actor in self.__actores]
-        """
+
         return self.__actores
 
     @property
@@ -83,17 +78,13 @@ class Pelicula:
             raise ValueError("La duración debe ser un número positivo.")
 
     def __str__(self):
-        # Si quieres mostrar los nombres de los actores,
-        # podrías hacer ', '.join([actor.nombre for actor in self.__actores])
+
         nombres_actores = ', '.join([actor.nombre for actor in self.__actores])
         return (f"{self.titulo} ({self.anio}) - Puntuación: {self.puntuacion}/10, "
                 f"Duración: {self.duracion} min, Actores: {nombres_actores}")
 
     def to_dict(self):
-        """
-        Convierte la película a un diccionario, serializando también a los actores
-        como una lista de dicts { "nombre": ... }.
-        """
+
         return {
             "titulo": self.titulo,
             "actores": [actor.to_dict() for actor in self.__actores],
@@ -115,15 +106,12 @@ class PeliculasModel:
 
         with open(self.archivo_json, "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
-            # datos es una lista de diccionarios,
-            # donde 'actores' es una lista de strings
-            # => se convertirá en objetos Actor en Pelicula.__init__
+
             return [Pelicula(**pelicula) for pelicula in datos]
 
     def __guardar_peliculas(self):
         with open(self.archivo_json, "w", encoding="utf-8") as archivo:
-            # Al serializar, Pelicula.to_dict()
-            # convertirá cada Actor a dict {"nombre": ...}
+
             json.dump([pelicula.to_dict() for pelicula in self.__peliculas], archivo, indent=4)
 
     def obtener_titulos(self):
